@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Movies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Movies</h1>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Enter movie keyword" value="{{ query or '' }}">
+        <button type="submit" class="button">Search</button>
+    </form>
+    <ul>
+        {% for movie in movies %}
+            <li style="--index: {{ loop.index0 }};">
+                {{ movie.title }} - Release Date: {{ movie.release_date }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Popular Movies</a>
+</body>
+</html>
